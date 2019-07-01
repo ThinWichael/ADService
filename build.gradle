@@ -1,0 +1,50 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.6.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Javadoc) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-devtools")
+    // spring boot test
+    compile("org.springframework.boot:spring-boot-starter-test") 
+    
+    // Database Access: jdbc tool
+    //compile("org.springframework:spring-jdbc")
+    //compile("com.h2database:h2") // embedded in-memory database
+    
+    // Database Access: JPA solution
+    //compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    
+    // Database Access: mongodb
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    
+    // Log4j 
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    
+    implementation 'com.google.code.gson:gson:2.8.5'
+    
+    // Deploye at tomcat
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    
+    testCompile("junit:junit")}
